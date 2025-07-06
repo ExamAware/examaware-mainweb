@@ -3,412 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSZ ExamAware - 考试信息显示工具</title>
+    <title>DSZ ExamAware</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #6b46c1 0%, #4299e1 100%);
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
         }
-        .transition-all {
+        
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(62, 185, 80, 0.5);
             transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(62, 185, 80, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3fb950, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex-1 mb-6 md:mb-0">
-                    <h1 class="text-4xl font-bold mb-2">DSZ ExamAware</h1>
-                    <p class="text-xl opacity-90">显示当前时间与考试详细信息的显示工具</p>
+    <!-- Hero Banner (50% of viewport height) -->
+    <div class="min-h-[50vh] bg-gradient-to-r from-blue-500 to-green-500 flex flex-col justify-center relative overflow-hidden">
+        <!-- Floating circles decoration -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute w-40 h-40 rounded-full bg-white -left-10 -top-10 floating" style="animation-delay: 0s;"></div>
+            <div class="absolute w-60 h-60 rounded-full bg-white right-20 top-1/3 floating" style="animation-delay: 1s;"></div>
+            <div class="absolute w-32 h-32 rounded-full bg-white right-1/3 bottom-20 floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 md:px-12 py-12 z-10 fade-in">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between">
+                <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">DSZ ExamAware</h1>
+                    <h2 class="text-xl md:text-2xl text-white/90 mb-6">
+                        智能考试信息显示工具 - 助您高效备考
+                    </h2>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://github.com/ExamAware/dsz-exam-showboard/releases/latest" 
+                           class="btn-glow px-6 py-3 bg-white text-green-600 rounded-lg font-bold text-center hover:bg-opacity-90 transition">
+                            <i class="fas fa-download mr-2"></i> 立即下载
+                        </a>
+                        <a href="https://qm.qq.com/q/zDiEipHsaI" 
+                           class="px-6 py-3 bg-white bg-opacity-20 text-white rounded-lg font-bold text-center hover:bg-opacity-30 transition border-2 border-white border-opacity-30">
+                            <i class="fab fa-qq mr-2"></i> 加入QQ群
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <span class="px-3 py-1 bg-white/20 text-white rounded-full text-sm flex items-center">
+                            <i class="fas fa-star mr-1 text-yellow-300"></i> GitHub Stars
+                        </span>
+                        <span class="px-3 py-1 bg-white/20 text-white rounded-full text-sm flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 实时考试信息
+                        </span>
+                        <span class="px-3 py-1 bg-white/20 text-white rounded-full text-sm flex items-center">
+                            <i class="fas fa-layer-group mr-1"></i> 多平台支持
+                        </span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <img src="https://avatars.githubusercontent.com/u/195304368?s=200&v=4" alt="LGBT-CN logo" class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
+                <div class="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
+                    <img src="https://avatars.githubusercontent.com/u/195304368?s=200&v=4" 
+                         alt="LGBT-CN logo" 
+                         class="w-48 md:w-64 h-48 md:h-64 rounded-full border-4 border-white shadow-xl floating">
                 </div>
-            </div>
-            
-            <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
-                <a href="https://github.com/ExamAware/dsz-exam-showboard" class="bg-white text-purple-700 px-4 py-2 rounded-full font-medium flex items-center hover:bg-gray-100 transition-all">
-                    <i class="fas fa-star mr-2"></i> Stars
-                    <span class="ml-1 bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">GitHub</span>
-                </a>
-                
-                <a href="https://github.com/ExamAware/dsz-exam-showboard/releases/latest" class="bg-white text-blue-700 px-4 py-2 rounded-full font-medium flex items-center hover:bg-gray-100 transition-all">
-                    <i class="fas fa-download mr-2"></i> 下载量
-                    <span class="ml-1 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">GitHub</span>
-                </a>
-                
-                <a href="https://qm.qq.com/q/zDiEipHsaI" class="bg-white text-blue-600 px-4 py-2 rounded-full font-medium flex items-center hover:bg-gray-100 transition-all">
-                    <i class="fab fa-qq mr-2"></i> QQ群｜901670561
-                </a>
-                
-                <a href="https://github.com/ExamAware/dsz-exam-showboard/releases/latest" class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium flex items-center hover:bg-green-200 transition-all">
-                    <i class="fas fa-tag mr-2"></i> 正式版
-                </a>
-                
-                <a href="https://github.com/ExamAware/dsz-exam-showboard/releases/" class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-medium flex items-center hover:bg-yellow-200 transition-all">
-                    <i class="fas fa-flask mr-2"></i> 测试版
-                </a>
             </div>
         </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Intro Section -->
-        <section class="mb-12">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">ExamAware 系列软件</h2>
-                <p class="text-gray-700 leading-relaxed">
-                    ExamAware 系列软件是显示当前时间与考试详细信息的显示工具，可以在各平台上运行。提供桌面端、移动端和网页版解决方案，满足不同场景下的考试信息展示需求。
-                </p>
+    <div class="container mx-auto px-6 md:px-12 py-16">
+        <!-- About Section -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">ExamAware 系列软件</h2>
+            <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto">
+                ExamAware 系列软件是显示当前时间与考试详细信息的显示工具，可以在各平台上运行。
+                我们从2020年开发至今，致力于为学生和考试工作人员提供最便捷的考试信息展示解决方案。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- Feature Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-desktop text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-blue-500 transition">桌面端应用</h3>
+                    <p class="text-gray-600">
+                        专为Windows设计的高可用性考试看板，支持自定义主题和考试信息展示。
+                    </p>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-green-500 transition">移动端应用</h3>
+                    <p class="text-gray-600">
+                        适用于Android/iOS设备的便携版考试看板，随时随地查看考试信息。
+                    </p>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-globe text-purple-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-purple-500 transition">网页版应用</h3>
+                    <p class="text-gray-600">
+                        无需安装，直接在浏览器中使用的考试信息展示工具，支持云同步。
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Repositories Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">仓库</h2>
-            <p class="text-gray-600 mb-6">本组织下的一些主要仓库：</p>
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">仓库资源</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                 <!-- Old Version -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-history mr-2 text-purple-600"></i> 旧版 ExamAware （已过时）
+                <div class="border-b border-gray-200 p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">
+                        <i class="fas fa-history text-yellow-500 mr-2"></i> 旧版 ExamAware（已过时）
                     </h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="https://github.com/ExamAware/dsz-exam-showboard" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-desktop mr-2"></i> DSZ-Exam-Showboard
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">高可用性 桌面端旧版考试看板 <a href="https://examboard.cn/" class="text-blue-500 hover:underline">直达？</a></p>
-                        </li>
-                        <li>
-                            <a href="https://github.com/ExamAware/dsz-examaware-mobile" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-mobile-alt mr-2"></i> dsz-examaware-mobile
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">移动端旧版考试看板</p>
-                        </li>
-                    </ul>
+                    <div class="space-y-4 pl-6">
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3"></div>
+                            <div>
+                                <a href="https://github.com/ExamAware/dsz-exam-showboard" class="font-medium hover:text-blue-500 transition">
+                                    <span class="text-blue-500">DSZ-Exam-Showboard</span> - 高可用性桌面端旧版考试看板
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3"></div>
+                            <div>
+                                <a href="https://github.com/ExamAware/dsz-examaware-mobile" class="font-medium hover:text-blue-500 transition">
+                                    <span class="text-blue-500">dsz-examaware-mobile</span> - 移动端旧版考试看板
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- New Version -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-star mr-2 text-yellow-500"></i> 新版 ExamAware
+                <div class="border-b border-gray-200 p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">
+                        <i class="fas fa-bolt text-green-500 mr-2"></i> 新版 ExamAware
                     </h3>
-                    
-                    <h4 class="font-semibold text-gray-700 mt-4 mb-2 flex items-center">
-                        <i class="fas fa-calendar-alt mr-2 text-blue-500"></i> ExamSchedule 系列
-                    </h4>
-                    <ul class="space-y-3 ml-4">
-                        <li>
-                            <a href="https://github.com/ExamAware/ExamSchedule" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-globe mr-2"></i> ExamSchedule
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">高可用性 网页版考试看板 <a href="https://es.examaware.cn/" class="text-blue-500 hover:underline">直达？</a></p>
-                        </li>
-                        <li>
-                            <a href="https://github.com/ExamAware/ExamSchedule-Management" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-cloud mr-2"></i> ExamSchedule-Management
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">高可用性 考试看板——云管理</p>
-                        </li>
-                        <li>
-                            <a href="https://github.com/ExamAware/ExamScheduleEditor" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-edit mr-2"></i> ExamScheduleEditor
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">旧版配置文件编辑器</p>
-                        </li>
-                    </ul>
-                    
-                    <h4 class="font-semibold text-gray-700 mt-4 mb-2 flex items-center">
-                        <i class="fas fa-code-branch mr-2 text-green-500"></i> ExamAware2 系列
-                    </h4>
-                    <ul class="space-y-3 ml-4">
-                        <li>
-                            <a href="https://github.com/ExamAware/ExamAware2-Desktop" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-laptop-code mr-2"></i> ExamAware2-Desktop
-                            </a>
-                            <p class="text-gray-600 text-sm ml-6">🚧正在开发中 DSZ知试🧀桌面端</p>
-                        </li>
-                    </ul>
+                    <div class="space-y-4 pl-6">
+                        <div class="font-medium text-gray-700 mb-2">ExamSchedule 系列</div>
+                        <div class="space-y-4 pl-6">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <a href="https://github.com/ExamAware/ExamSchedule" class="font-medium hover:text-green-600 transition">
+                                        <span class="text-green-600">ExamSchedule</span> - 高可用性网页版考试看板
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <a href="https://github.com/ExamAware/ExamSchedule-Management" class="font-medium hover:text-green-600 transition">
+                                        <span class="text-green-600">ExamSchedule-Management</span> - 高可用性考试看板—云管理
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <a href="https://github.com/ExamAware/ExamScheduleEditor" class="font-medium hover:text-green-600 transition">
+                                        <span class="text-green-600">ExamScheduleEditor</span> - 旧版配置文件编辑器
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="font-medium text-gray-700 mb-2 mt-4">ExamAware2 系列</div>
+                        <div class="space-y-4 pl-6">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <a href="https://github.com/ExamAware/ExamAware2-Desktop" class="font-medium hover:text-purple-600 transition">
+                                        <span class="text-purple-600">ExamAware2-Desktop</span> - 🚧正在开发中 DSZ知试🧀桌面端
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Other -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover md:col-span-2">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-ellipsis-h mr-2 text-gray-500"></i> 其他
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">
+                        <i class="fas fa-ellipsis-h text-blue-500 mr-2"></i> 其他
                     </h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="https://github.com/ExamAware/ExamAware-docs" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                <i class="fas fa-book mr-2"></i> ExamAware-docs
+                    <div class="flex items-start">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
+                        <div>
+                            <a href="https://github.com/ExamAware/ExamAware-docs" class="font-medium hover:text-blue-600 transition">
+                                <span class="text-blue-600">ExamAware-docs</span> - ExamAware 文档站
+                                <a href="https://docs.examaware.tech/" class="text-gray-500 hover:text-blue-400 ml-2">直达？</a>
                             </a>
-                            <p class="text-gray-600 text-sm ml-6">ExamAware 文档站 <a href="https://docs.examaware.cn/" class="text-blue-500 hover:underline">直达？</a></p>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Usage Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">使用</h2>
+        <!-- System Requirements -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">系统需求</h2>
             
-            <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">系统需求</h3>
-                <p class="text-gray-700 mb-4">请确保您的系统满足以下需求：</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Desktop -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-desktop text-blue-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800">桌面端</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><span class="font-medium">Windows:</span> Windows 10 及以上，x64/86 架构</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><span class="font-medium">Linux:</span> 尚未确定</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            <span><span class="font-medium">macOS:</span> macOS 13 及以上</span>
+                        </li>
+                    </ul>
+                </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Desktop -->
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                            <i class="fas fa-desktop mr-2 text-blue-500"></i> 桌面端
-                        </h4>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
-                                <span><strong>Windows:</strong> Windows 10 及以上，x64/86 架构</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-question-circle text-yellow-500 mr-2 mt-1"></i>
-                                <span><strong>Linux:</strong> 尚未确定</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
-                                <span><strong>macOS:</strong> macOS 13 及以上</span>
-                            </li>
-                        </ul>
+                <!-- Mobile -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mobile-alt text-green-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800">移动端</h3>
                     </div>
-                    
-                    <!-- Mobile -->
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                            <i class="fas fa-mobile-alt mr-2 text-purple-500"></i> 移动端
-                        </h4>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
-                                <span><strong>Android:</strong> Android 7 及以上</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
-                                <span><strong>iOS:</strong> iOS 13 及以上</span>
-                            </li>
-                        </ul>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><span class="font-medium">Android:</span> Android 7 及以上</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span><span class="font-medium">iOS:</span> iOS 13 及以上</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Web -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-globe text-purple-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800">网页版</h3>
                     </div>
-                    
-                    <!-- Web -->
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                            <i class="fas fa-globe mr-2 text-green-500"></i> 网页版
-                        </h4>
-                        <p class="text-sm text-gray-700 mb-3">兼容所有现代浏览器</p>
+                    <div class="overflow-auto">
+                        <table class="w-full text-sm text-gray-700">
+                            <thead class="bg-purple-100">
+                                <tr>
+                                    <th class="px-4 py-2">平台</th>
+                                    <th class="px-4 py-2">🚀 正式版</th>
+                                    <th class="px-4 py-2">🚧 当前构建</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-purple-200">
+                                    <td class="px-4 py-2">桌面端</td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/dsz-exam-showboard/releases" class="text-purple-600 hover:underline">下载</a>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/dsz-exam-showboard/actions" class="text-purple-600 hover:underline">构建</a>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-purple-200">
+                                    <td class="px-4 py-2">移动端</td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/dsz-examaware-mobile/releases" class="text-purple-600 hover:underline">下载</a>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/dsz-examaware-mobile/actions" class="text-purple-600 hover:underline">构建</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2">网页端</td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/ExamSchedule" class="text-purple-600 hover:underline">主分支</a>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <a href="https://github.com/ExamAware/ExamSchedule/tree/dev" class="text-purple-600 hover:underline">开发分支</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
             
-            <!-- Download Table -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">平台</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">🚀 正式版</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">🚧 当前构建</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">桌面端</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/dsz-exam-showboard/releases" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> dsz-exam-showboard/releases
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/dsz-exam-showboard/actions" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> dsz-exam-showboard/actions
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">移动端</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/dsz-examaware-mobile/releases" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> dsz-examaware-mobile/releases
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/dsz-examaware-mobile/actions" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> dsz-examaware-mobile/actions
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">网页端</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/ExamSchedule" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> ExamSchedule主分支
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                                    <a href="https://github.com/ExamAware/ExamSchedule/tree/dev" class="flex items-center">
-                                        <i class="fas fa-external-link-alt mr-2"></i> ExamSchedule开发分支
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- Important Note -->
-            <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r">
+            <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
                 <div class="flex">
                     <div class="flex-shrink-0">
-                        <i class="fas fa-exclamation-circle text-yellow-500 text-xl"></i>
+                        <i class="fas fa-exclamation-circle text-yellow-400 text-xl mr-3 mt-1"></i>
                     </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-yellow-700">
-                            <strong>详细安装说明请参阅</strong> <a href="https://docs.examaware.cn/app/setup.html" class="font-medium text-yellow-700 underline hover:text-yellow-600">ExamAware wiki</a>。
+                    <div>
+                        <p class="text-yellow-700 font-medium">
+                            详细安装说明请参阅 <a href="https://docs.examaware.tech/app/setup.html" class="text-yellow-600 hover:underline">ExamAware wiki</a>。
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Help Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">获取帮助＆加入社区</h2>
+        <!-- Help & Community -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">获取帮助＆加入社区</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Documentation -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                            <i class="fas fa-book text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">文档</h3>
-                            <p class="mt-1 text-sm text-gray-600">
-                                您可以访问 <a href="https://docs.examaware.cn/" class="text-blue-600 hover:text-blue-800 font-medium">ExamAware wiki</a> 获取详细文档和使用指南。
-                            </p>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Help Options -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-question-circle text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800">帮助资源</h3>
                     </div>
-                </div>
-                
-                <!-- Issues -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-red-100 p-3 rounded-full">
-                            <i class="fas fa-bug text-red-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">问题反馈</h3>
-                            <p class="mt-1 text-sm text-gray-600">
-                                如果您遇到 Bug，或需要提出优化建议或新的功能，请在对应仓库提交 Issues 或在 Discussions 中讨论。
-                            </p>
-                        </div>
-                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-blue-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">文档 Wiki</h4>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    访问 <a href="https://docs.examaware.tech/" class="text-blue-500 hover:underline">ExamAware wiki</a> 获取完整文档
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-bug text-green-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">问题反馈</h4>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    如果您遇到 Bug，或需要提出优化建议或新功能，请在对应仓库提交 Issues 或在 Discussions 中讨论
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-code-branch text-purple-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">代码贡献</h4>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    欢迎为本软件进行改进或编写新功能提交 Pull Request
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 
                 <!-- QQ Group -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
-                            <i class="fab fa-qq text-green-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">QQ交流群</h3>
-                            <p class="mt-1 text-sm text-gray-600">
-                                您也可以加入 <a href="https://qm.qq.com/q/zDiEipHsaI" class="text-blue-600 hover:text-blue-800 font-medium">QQ群｜901670561</a> 获取帮助或交流讨论。
-                            </p>
-                        </div>
+                <div class="bg-gradient-to-b from-green-50 to-white rounded-xl shadow-lg p-6 border border-green-200 flex flex-col">
+                    <div class="flex items-center mb-6">
+                        <i class="fab fa-qq text-green-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800">QQ群社区</h3>
                     </div>
-                </div>
-                
-                <!-- Contribution -->
-                <div class="bg-white rounded-xl shadow-md p-6 transition-all card-hover">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-purple-100 p-3 rounded-full">
-                            <i class="fas fa-code-branch text-purple-600 text-xl"></i>
+                    <div class="flex-grow flex flex-col justify-center items-center">
+                        <div class="bg-white p-4 rounded-lg shadow-inner border border-green-300 mb-6">
+                            <div class="text-5xl font-bold text-center text-green-500 mb-2">901670561</div>
+                            <div class="text-center text-sm text-gray-600">搜索群号加入</div>
                         </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">贡献代码</h3>
-                            <p class="mt-1 text-sm text-gray-600">
-                                欢迎为本软件进行改进或编写新功能提交 Pull Request。
-                            </p>
-                        </div>
+                        <a href="https://qm.qq.com/q/zDiEipHsaI" 
+                           class="px-6 py-3 bg-green-500 text-white rounded-lg font-bold text-center hover:bg-green-600 transition">
+                            <i class="fab fa-qq mr-2"></i> 立即加入QQ群
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stars Section -->
-        <section>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Stars 历史</h2>
+        <!-- Stars History -->
+        <section class="fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Stars 历史</h2>
             
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center mb-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">dsz-exam-showboard</h3>
-                    <img src="https://starchart.cc/ExamAware/dsz-exam-showboard.svg?variant=adaptive" alt="Star history chart for dsz-exam-showboard" class="w-full max-w-3xl mx-auto rounded-lg shadow-sm">
-                </div>
-                
-                <div class="text-center mb-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">ExamSchedule</h3>
-                    <img src="https://starchart.cc/ExamAware/ExamSchedule.svg?variant=adaptive" alt="Star history chart for ExamSchedule" class="w-full max-w-3xl mx-auto rounded-lg shadow-sm">
-                </div>
-                
-                <div class="text-center">
-                    <p class="text-gray-700">
-                        如果这些项目对您有帮助，请向对应仓库点亮 Star ⭐
-                    </p>
-                    <div class="mt-4 flex justify-center space-x-4">
-                        <a href="https://github.com/ExamAware/dsz-exam-showboard" class="bg-gray-800 text-white px-4 py-2 rounded-full font-medium flex items-center hover:bg-gray-700 transition-all">
-                            <i class="fas fa-star mr-2"></i> Star dsz-exam-showboard
-                        </a>
-                        <a href="https://github.com/ExamAware/ExamSchedule" class="bg-gray-800 text-white px-4 py-2 rounded-full font-medium flex items-center hover:bg-gray-700 transition-all">
-                            <i class="fas fa-star mr-2"></i> Star ExamSchedule
-                        </a>
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center">
+                        <img src="https://starchart.cc/ExamAware/dsz-exam-showboard.svg?variant=adaptive" 
+                             alt="Star history chart" 
+                             class="w-full h-auto rounded-lg hover:shadow-md transition">
+                        <div class="mt-4 font-medium">dsz-exam-showboard</div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://starchart.cc/ExamAware/ExamSchedule.svg?variant=adaptive" 
+                             alt="Star history chart" 
+                             class="w-full h-auto rounded-lg hover:shadow-md transition">
+                        <div class="mt-4 font-medium">ExamSchedule</div>
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center text-gray-700">
+                如果这些项目对您有帮助，请向对应仓库点亮 <span class="text-yellow-400"><i class="fas fa-star"></i> Star</span>
+            </div>
         </section>
-    </main>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h2 class="text-xl font-bold">DSZ ExamAware</h2>
-                    <p class="text-gray-400">显示当前时间与考试详细信息的显示工具</p>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="https://github.com/ExamAware" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="https://qm.qq.com/q/zDiEipHsaI" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-qq text-2xl"></i>
-                    </a>
-                </div>
+    <footer class="bg-gray-800 text-white py-8 fade-in">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/ExamAware" class="text-gray-300 hover:text-white transition">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="https://qm.qq.com/q/zDiEipHsaI" class="text-gray-300 hover:text-white transition">
+                    <i class="fab fa-qq text-2xl"></i>
+                </a>
             </div>
-            <div class="mt-6 pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">
-                <div class="mb-3">
-                    <a href="https://chuqiyun.com" target="_blank"><img src="https://chuqiyun.com/static/images/poweredby.svg" width="80" alt="初七云" class="mx-auto"></a>
-                </div>
-                <p>© 2025 ExamAware. All rights reserved.</p>
+            <div class="mb-3">
+                <a href="https://chuqiyun.com" target="_blank">
+                    <img src="https://chuqiyun.com/static/images/poweredby.svg" width="80" alt="初七云" class="mx-auto">
+                </a>
             </div>
+            <p>© 2025 ExamAware. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Add scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    
+                    // If element is in viewport (with some offset)
+                    if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Run once on load
+            fadeInOnScroll();
+            
+            // Run on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
 </body>
 </html>
