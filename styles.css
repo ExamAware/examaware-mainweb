@@ -1,0 +1,156 @@
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 5s ease-in-out infinite;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #3fb950, #1e90ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body.dark-mode {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+body.dark-mode .gradient-text {
+    background: linear-gradient(90deg, #48bb78, #4299e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body.dark-mode .bg-white {
+    background-color: #2d3748 !important;
+}
+
+body.dark-mode .text-gray-700 {
+    color: #cbd5e0 !important;
+}
+
+body.dark-mode .text-gray-600 {
+    color: #a0aec0 !important;
+}
+
+body.dark-mode .border-gray-200 {
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-blue-50.to-blue-100 {
+    background: linear-gradient(to bottom right, #2a3547, #313d4f);
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-green-50.to-green-100 {
+    background: linear-gradient(to bottom right, #2a4735, #314f3d);
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .bg-gradient-to-br.from-purple-50.to-purple-100 {
+    background: linear-gradient(to bottom right, #352a47, #4f313d);
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .text-gray-800 {
+    color: #e2e8f0;
+}
+
+body.dark-mode .bg-blue-100 {
+    background-color: #2b6cb0 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .text-blue-500 {
+    color: #63b3ed !important;
+}
+
+body.dark-mode .text-blue-800 {
+    color: #90cdf4 !important;
+}
+
+body.dark-mode .border-blue-500 {
+    border-color: #63b3ed !important;
+}
+
+body.dark-mode .bg-green-100 {
+    background-color: #38a169 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .text-green-500 {
+    color: #68d391 !important;
+}
+
+body.dark-mode .bg-purple-100 {
+    background-color: #805ad5 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .text-purple-500 {
+    color: #a78bfa !important;
+}
+
+body.dark-mode .bg-white.p-4.rounded-lg.shadow-inner.border.border-blue-300 {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .qq-group-card {
+    background: linear-gradient(to bottom, #2a3547, #2d3748) !important;
+    border-color: #4a5568 !important;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-glow {
+    transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.bg-white.rounded-xl.shadow-lg.p-6.group:hover,
+.bg-white.rounded-xl.shadow-lg.overflow-hidden:hover,
+.qq-group-card:hover {
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.qq-group-card .bg-white.p-4.rounded-lg.shadow-inner.border.border-blue-300:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+body.dark-mode a:hover {
+    color: #90cdf4;
+}
+
+body.dark-mode .hover\:text-blue-500:hover {
+    color: #63b3ed !important;
+}
+
+body.dark-mode .hover\:text-green-600:hover {
+    color: #68d391 !important;
+}
+
+body.dark-mode .hover\:text-purple-600:hover {
+    color: #a78bfa !important;
+}
+
+body.dark-mode .hover\:underline:hover {
+    text-decoration: underline;
+}
