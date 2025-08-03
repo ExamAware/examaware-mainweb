@@ -5,52 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSZ ExamAware</title>
+    <title>ExamAware | 智能考试信息显示工具</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 5s ease-in-out infinite;
-        }
-        
-        .btn-glow {
-            box-shadow: 0 0 15px rgba(62, 185, 80, 0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-glow:hover {
-            box-shadow: 0 0 25px rgba(62, 185, 80, 0.8);
-            transform: translateY(-2px);
-        }
-        
-        .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, #3fb950, #1e90ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Hero Banner (50% of viewport height) -->
+    <header class="absolute top-0 right-0 p-6 z-20">
+        <button id="theme-toggle" class="px-4 py-2 bg-white bg-opacity-80 text-gray-800 rounded-lg font-bold hover:bg-opacity-90 transition shadow-md">
+            <i class="fas fa-moon mr-2"></i> Dark Mode
+        </button>
+    </header>
+
     <div class="min-h-[50vh] bg-gradient-to-r from-blue-500 to-green-500 flex flex-col justify-center relative overflow-hidden">
-        <!-- Floating circles decoration -->
         <div class="absolute top-0 left-0 w-full h-full opacity-20">
             <div class="absolute w-40 h-40 rounded-full bg-white -left-10 -top-10 floating" style="animation-delay: 0s;"></div>
             <div class="absolute w-60 h-60 rounded-full bg-white right-20 top-1/3 floating" style="animation-delay: 1s;"></div>
@@ -60,17 +28,21 @@
         <div class="container mx-auto px-6 md:px-12 py-12 z-10 fade-in">
             <div class="flex flex-col-reverse md:flex-row items-center justify-between">
                 <div class="w-full md:w-1/2 mt-8 md:mt-0">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">DSZ ExamAware</h1>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">ExamAware</h1>
                     <h2 class="text-xl md:text-2xl text-white/90 mb-6">
-                        智能考试信息显示工具 - 助您高效备考
+                        智能考试信息显示工具 - 助您高效应考
                     </h2>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://github.com/ExamAware/dsz-exam-showboard/releases/latest" 
+                        <a href="https://docs.examaware.tech/" target="_blank"
                            class="btn-glow px-6 py-3 bg-white text-green-600 rounded-lg font-bold text-center hover:bg-opacity-90 transition">
-                            <i class="fas fa-download mr-2"></i> 立即下载
+                            <i class="fas fa-book mr-2"></i> 官方文档
                         </a>
-                        <a href="https://qm.qq.com/q/zDiEipHsaI" 
-                           class="px-6 py-3 bg-white bg-opacity-20 text-white rounded-lg font-bold text-center hover:bg-opacity-30 transition border-2 border-white border-opacity-30">
+                        <a href="https://github.com/ExamAware" target="_blank"
+                           class="btn-glow px-6 py-3 bg-white text-gray-700 rounded-lg font-bold text-center hover:bg-opacity-90 transition">
+                            <i class="fab fa-github mr-2"></i> GitHub主页
+                        </a>
+                        <a href="https://qm.qq.com/q/zDiEipHsaI" target="_blank"
+                           class="btn-glow px-6 py-3 bg-white bg-opacity-20 text-white rounded-lg font-bold text-center hover:bg-opacity-30 transition border-2 border-white border-opacity-30">
                             <i class="fab fa-qq mr-2"></i> 加入QQ群
                         </a>
                     </div>
@@ -95,18 +67,15 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container mx-auto px-6 md:px-12 py-16">
-        <!-- About Section -->
         <section class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-center mb-8 gradient-text">ExamAware 系列软件</h2>
             <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto">
                 ExamAware 系列软件是显示当前时间与考试详细信息的显示工具，可以在各平台上运行。
-                我们从2024年开发至今，致力于为学生和考试工作人员提供最便捷的考试信息展示解决方案。
+                我们从 2024 年开发至今，致力于为学生和考试工作人员提供最便捷的考试信息展示解决方案。
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                <!-- Feature Card 1 -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
                     <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-desktop text-blue-500 text-2xl"></i>
@@ -117,7 +86,6 @@
                     </p>
                 </div>
                 
-                <!-- Feature Card 2 -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
                     <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-mobile-alt text-green-500 text-2xl"></i>
@@ -128,7 +96,6 @@
                     </p>
                 </div>
                 
-                <!-- Feature Card 3 -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition group">
                     <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-globe text-purple-500 text-2xl"></i>
@@ -141,37 +108,31 @@
             </div>
         </section>
 
-        <!-- Repositories Section -->
         <section class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-center mb-8 gradient-text">仓库资源</h2>
             
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <!-- Old Version -->
                 <div class="border-b border-gray-200 p-6">
                     <h3 class="text-xl font-bold mb-4 text-gray-800">
                         <i class="fas fa-history text-yellow-500 mr-2"></i> 旧版 ExamAware（已过时）
                     </h3>
                     <div class="space-y-4 pl-6">
+                        <div class="font-medium text-gray-700 mb-2">ExamShowboard 系列</div>
                         <div class="flex items-start">
                             <div class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3"></div>
                             <div>
-                                <a href="https://github.com/ExamAware/dsz-exam-showboard" class="font-medium hover:text-blue-500 transition">
-                                    <span class="text-blue-500">DSZ-Exam-Showboard</span> - 高可用性桌面端旧版考试看板 <a href="https://examboard.cn/" class="text-blue-500 hover:underline">直达？</a>
-                                </a>
+                                <a href="https://github.com/ExamAware/ExamShowboard-Legacy" target="_blank" class="font-medium hover:text-blue-500 transition"><span class="text-blue-500">ExamShowboard-Legacy</span></a> - 旧版桌面端考试看板，<a href="https://examboard.cn/" target="_blank" class="text-blue-500 hover:underline">在线体验➡️</a>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3"></div>
                             <div>
-                                <a href="https://github.com/ExamAware/dsz-examaware-mobile" class="font-medium hover:text-blue-500 transition">
-                                    <span class="text-blue-500">dsz-examaware-mobile</span> - 移动端旧版考试看板
-                                </a>
+                                <a href="https://github.com/ExamAware/ExamAware-Mobile" target="_blank" class="font-medium hover:text-blue-500 transition"><span class="text-blue-500">ExamAware-Mobile</span></a> - 旧版移动端考试看板
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- New Version -->
                 <div class="border-b border-gray-200 p-6">
                     <h3 class="text-xl font-bold mb-4 text-gray-800">
                         <i class="fas fa-bolt text-green-500 mr-2"></i> 新版 ExamAware
@@ -182,25 +143,19 @@
                             <div class="flex items-start">
                                 <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
                                 <div>
-                                    <a href="https://github.com/ExamAware/ExamSchedule" class="font-medium hover:text-green-600 transition">
-                                        <span class="text-green-600">ExamSchedule</span> - 高可用性网页版考试看板 <a href="https://es.examaware.cn/" class="text-blue-500 hover:underline">直达？</a>
-                                    </a>
+                                    <a href="https://github.com/ExamAware/ExamSchedule" target="_blank" class="font-medium hover:text-green-600 transition"><span class="text-green-600">ExamSchedule</span></a> - 高可用性网页版考试看板，<a href="https://es.examaware.cn/" target="_blank" class="text-blue-500 hover:underline">在线体验➡️</a>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
                                 <div>
-                                    <a href="https://github.com/ExamAware/ExamSchedule-Management" class="font-medium hover:text-green-600 transition">
-                                        <span class="text-green-600">ExamSchedule-Management</span> - 高可用性考试看板—云管理
-                                    </a>
+                                    <a href="https://github.com/ExamAware/ExamSchedule-Management" target="_blank" class="font-medium hover:text-green-600 transition"><span class="text-green-600">ExamSchedule-Management</span></a> - 考试看板云管理
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
                                 <div>
-                                    <a href="https://github.com/ExamAware/ExamScheduleEditor" class="font-medium hover:text-green-600 transition">
-                                        <span class="text-green-600">ExamScheduleEditor</span> - 旧版配置文件编辑器
-                                    </a>
+                                    <a href="https://github.com/ExamAware/ExamScheduleEditor" target="_blank" class="font-medium hover:text-green-600 transition"><span class="text-green-600">ExamScheduleEditor</span></a> - 旧版配置文件编辑器
                                 </div>
                             </div>
                         </div>
@@ -210,16 +165,13 @@
                             <div class="flex items-start">
                                 <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3"></div>
                                 <div>
-                                    <a href="https://github.com/ExamAware/ExamAware2-Desktop" class="font-medium hover:text-purple-600 transition">
-                                        <span class="text-purple-600">ExamAware2-Desktop</span> - 🚧正在开发中 DSZ知试🧀桌面端
-                                    </a>
+                                    <a href="https://github.com/ExamAware/ExamAware2-Desktop" target="_blank" class="font-medium hover:text-purple-600 transition"><span class="text-purple-600">ExamAware2-Desktop</span></a> - 🚧正在开发中 DSZ知试🧀桌面端
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Other -->
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-4 text-gray-800">
                         <i class="fas fa-ellipsis-h text-blue-500 mr-2"></i> 其他
@@ -227,21 +179,17 @@
                     <div class="flex items-start">
                         <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
                         <div>
-                            <a href="https://github.com/ExamAware/ExamAware-docs" class="font-medium hover:text-blue-600 transition">
-                                <span class="text-blue-600">ExamAware-docs</span> - ExamAware 文档站 <a href="https://docs.examaware.cn/" class="text-blue-500 hover:underline">直达？</a>
-                            </a>
+                            <a href="https://github.com/ExamAware/ExamAware-docs" target="_blank" class="font-medium hover:text-blue-600 transition"><span class="text-blue-600">ExamAware-docs</span></a> - <a href="https://docs.examaware.cn/" target="_blank" class="text-blue-500 hover:underline">ExamAware 文档站</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- System Requirements -->
         <section class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-center mb-8 gradient-text">系统需求</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Desktop -->
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-desktop text-blue-500 text-2xl mr-3"></i>
@@ -249,21 +197,32 @@
                     </div>
                     <ul class="space-y-2 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span><span class="font-medium">Windows:</span> Windows 10 及以上，x64/86 架构</span>
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span><span class="font-medium px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">Windows</span> Windows 10 及以上，x64/x86 架构</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span><span class="font-medium">Linux:</span> 尚未确定</span>
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span><span class="font-medium px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">Linux</span> 尚未确定</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span><span class="font-medium">macOS:</span> macOS 13 及以上</span>
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span><span class="font-medium px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">macOS</span> macOS 13 及以上</span>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Mobile -->
                 <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-mobile-alt text-green-500 text-2xl mr-3"></i>
@@ -271,89 +230,69 @@
                     </div>
                     <ul class="space-y-2 text-gray-700">
                         <li class="flex items-start">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span><span class="font-medium">Android:</span> Android 7 及以上</span>
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span><span class="font-medium px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">Android</span> Android 7 及以上</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span><span class="font-medium">iOS:</span> iOS 13 及以上</span>
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span><span class="font-medium px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">iOS</span> iOS 13 及以上</span>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Web -->
                 <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200">
                     <div class="flex items-center mb-4">
                         <i class="fas fa-globe text-purple-500 text-2xl mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-800">网页版</h3>
                     </div>
-                    <div class="overflow-auto">
-                        <table class="w-full text-sm text-gray-700">
-                            <thead class="bg-purple-100">
-                                <tr>
-                                    <th class="px-4 py-2">平台</th>
-                                    <th class="px-4 py-2">🚀 正式版</th>
-                                    <th class="px-4 py-2">🚧 当前构建</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-purple-200">
-                                    <td class="px-4 py-2">桌面端</td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/dsz-exam-showboard/releases" class="text-purple-600 hover:underline">下载</a>
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/dsz-exam-showboard/actions" class="text-purple-600 hover:underline">构建</a>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-purple-200">
-                                    <td class="px-4 py-2">移动端</td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/dsz-examaware-mobile/releases" class="text-purple-600 hover:underline">下载</a>
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/dsz-examaware-mobile/actions" class="text-purple-600 hover:underline">构建</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-2">网页端</td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/ExamSchedule" class="text-purple-600 hover:underline">主分支</a>
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <a href="https://github.com/ExamAware/ExamSchedule/tree/dev" class="text-purple-600 hover:underline">开发分支</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span>Edge 浏览器</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span>Chrome 浏览器</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-5 h-5 mt-0.5 mr-2 border border-blue-500 rounded-sm text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span>Firefox 浏览器</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span>其它浏览器请自行测试……</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            
-            <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-exclamation-circle text-yellow-400 text-xl mr-3 mt-1"></i>
-                    </div>
-                    <div>
-                        <p class="text-yellow-700 font-medium">
-                            详细安装说明请参阅 <a href="https://docs.examaware.cn/app/setup.html" class="text-yellow-600 hover:underline">ExamAware wiki</a>。
-                        </p>
-                    </div>
-                </div>
-            </div>
         </section>
 
-        <!-- Help & Community -->
         <section class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-center mb-8 gradient-text">获取帮助＆加入社区</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Help Options -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <div class="flex items-center mb-6">
                         <i class="fas fa-question-circle text-blue-500 text-3xl mr-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800">帮助资源</h3>
+                        <h3 class="text-xl font-bold text-gray-800">帮助&贡献</h3>
                     </div>
                     <ul class="space-y-4">
                         <li class="flex items-start">
@@ -361,9 +300,9 @@
                                 <i class="fas fa-book text-blue-500"></i>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-medium text-gray-800">文档 Wiki</h4>
+                                <h4 class="font-medium text-gray-800">官方文档</h4>
                                 <p class="text-sm text-gray-600 mt-1">
-                                    访问 <a href="https://docs.examaware.cn/" class="text-blue-500 hover:underline">ExamAware wiki</a> 获取完整文档
+                                    访问 <a href="https://docs.examaware.cn/" class="text-blue-500 hover:underline">ExamAware docs</a> 阅读完整文档
                                 </p>
                             </div>
                         </li>
@@ -392,37 +331,31 @@
                     </ul>
                 </div>
                 
-                <!-- QQ Group -->
-                <div class="bg-gradient-to-b from-green-50 to-white rounded-xl shadow-lg p-6 border border-green-200 flex flex-col">
+                <div class="qq-group-card bg-gradient-to-b from-blue-50 to-white rounded-xl shadow-lg p-6 border border-blue-200 flex flex-col">
                     <div class="flex items-center mb-6">
-                        <i class="fab fa-qq text-green-500 text-3xl mr-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800">QQ群社区</h3>
+                        <i class="fab fa-qq text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800">QQ 群</h3>
                     </div>
                     <div class="flex-grow flex flex-col justify-center items-center">
-                        <div class="bg-white p-4 rounded-lg shadow-inner border border-green-300 mb-6">
-                            <div class="text-5xl font-bold text-center text-green-500 mb-2">901670561</div>
-                            <div class="text-center text-sm text-gray-600">搜索群号加入</div>
+                        <div class="bg-white p-4 rounded-lg shadow-inner border border-blue-300 mb-6">
+                            <div class="text-5xl font-bold text-center text-blue-500 mb-2">901670561</div>
+                            <div class="text-center text-sm text-gray-600">QQ 群号</div>
                         </div>
-                        <a href="https://qm.qq.com/q/zDiEipHsaI" 
-                           class="px-6 py-3 bg-green-500 text-white rounded-lg font-bold text-center hover:bg-green-600 transition">
-                            <i class="fab fa-qq mr-2"></i> 立即加入QQ群
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stars History -->
         <section class="fade-in">
             <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Stars 历史</h2>
             
             <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="text-center">
-                        <img src="https://starchart.cc/ExamAware/dsz-exam-showboard.svg?variant=adaptive" 
+                        <img src="https://starchart.cc/ExamAware/ExamShowboard-Legacy.svg?variant=adaptive" 
                              alt="Star history chart" 
                              class="w-full h-auto rounded-lg hover:shadow-md transition">
-                        <div class="mt-4 font-medium">dsz-exam-showboard</div>
+                        <div class="mt-4 font-medium">ExamShowboard-Legacy</div>
                     </div>
                     <div class="text-center">
                         <img src="https://starchart.cc/ExamAware/ExamSchedule.svg?variant=adaptive" 
@@ -439,7 +372,6 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 fade-in">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-6">
@@ -450,7 +382,7 @@
                     <i class="fab fa-qq text-2xl"></i>
                 </a>
             </div>
-            <p class="text-gray-300">© 2025 ExamAware. All rights reserved.</p>
+            <p class="text-gray-300">© 2025 ExamAware | All rights reserved.</p>
             <p class="mt-2">
                 <a href="https://beian.miit.gov.cn/" target="_blank" class="text-gray-300 hover:text-white transition text-base font-bold">
                     津ICP备2025035356号-7
@@ -460,8 +392,47 @@
     </footer>
 
     <script>
-        // Add scroll animation
         document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const themeToggleBtn = document.getElementById('theme-toggle');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    if (themeToggleBtn) {
+                        themeToggleBtn.innerHTML = '<i class="fas fa-sun mr-2"></i> 浅色模式';
+                        themeToggleBtn.classList.remove('bg-opacity-20', 'text-white', 'border-white', 'border-opacity-30');
+                        themeToggleBtn.classList.add('bg-white', 'text-gray-800');
+                    }
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                    if (themeToggleBtn) {
+                        themeToggleBtn.innerHTML = '<i class="fas fa-moon mr-2"></i> 深色模式';
+                        themeToggleBtn.classList.remove('bg-white', 'text-gray-800');
+                        themeToggleBtn.classList.add('bg-opacity-80', 'text-gray-800');
+                    }
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                setTheme('light');
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    if (body.classList.contains('dark-mode')) {
+                        setTheme('light');
+                    } else {
+                        setTheme('dark');
+                    }
+                });
+            }
+
             const fadeElements = document.querySelectorAll('.fade-in');
             
             const fadeInOnScroll = function() {
@@ -469,7 +440,6 @@
                     const elementTop = element.getBoundingClientRect().top;
                     const elementBottom = element.getBoundingClientRect().bottom;
                     
-                    // If element is in viewport (with some offset)
                     if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
                         element.style.opacity = '1';
                         element.style.transform = 'translateY(0)';
@@ -477,17 +447,14 @@
                 });
             };
             
-            // Set initial state
             fadeElements.forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
                 element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             });
             
-            // Run once on load
             fadeInOnScroll();
             
-            // Run on scroll
             window.addEventListener('scroll', fadeInOnScroll);
         });
     </script>
